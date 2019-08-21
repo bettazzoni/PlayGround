@@ -44,11 +44,7 @@ class Countdown extends Component {
         const { timerTime, timerOn } = this.state;
         const max = 216000000;
         if (!timerOn) {
-            if (input === "incHours" && timerTime + 3600000 < max) {
-                this.setState({ timerTime: timerTime + 3600000 });
-            } else if (input === "decHours" && timerTime - 3600000 >= 0) {
-                this.setState({ timerTime: timerTime - 3600000 });
-            } else if (input === "incMinutes" && timerTime + 60000 < max) {
+            if (input === "incMinutes" && timerTime + 60000 < max) {
                 this.setState({ timerTime: timerTime + 60000 });
             } else if (input === "decMinutes" && timerTime - 60000 >= 0) {
                 this.setState({ timerTime: timerTime - 60000 });
@@ -64,18 +60,15 @@ class Countdown extends Component {
         const { timerTime, timerStart, timerOn } = this.state;
         let seconds = ("0" + (Math.floor((timerTime / 1000) % 60) % 60)).slice(-2);
         let minutes = ("0" + Math.floor((timerTime / 60000) % 60)).slice(-2);
-        let hours = ("0" + Math.floor((timerTime / 3600000) % 60)).slice(-2);
         return (
           <div className = "Countdown" >
-              <div className = "Countdown-header" > Countdown < /div>
+              <div className = "Countdown-header" > { minutes }:{ seconds } < /div>
               <div className = "Countdown-label" >
-                <button onClick = {() => this.adjustTimer("incHours") } >&#8679;</button>
                 <button onClick= {() => this.adjustTimer("incMinutes") } >&#8679;</button>
                 <button onClick= {() => this.adjustTimer("incSeconds") } >&#8679;</button>
               </div>
-              <div className = "Countdown-time" > { hours }: { minutes }: { seconds } </div>
+              <div className = "Countdown-time" > { minutes }:{ seconds } </div>
               <div className = "Countdown-label" >
-                <button onClick= {() => this.adjustTimer("decHours") } >&#8681;</button>
                 <button onClick= {() => this.adjustTimer("decMinutes") } >&#8681;</button>
                 <button onClick= {() => this.adjustTimer("decSeconds") } >&#8681;</button>
               </div>
