@@ -60,6 +60,8 @@ class Countdown extends Component {
         const { timerTime, timerStart, timerOn } = this.state;
         let seconds = ("0" + (Math.floor((timerTime / 1000) % 60) % 60)).slice(-2);
         let minutes = ("0" + Math.floor((timerTime / 60000) % 60)).slice(-2);
+        let secs = ("0" + (Math.floor((timerStart / 1000) % 60) % 60)).slice(-2);
+        let mins = ("0" + Math.floor((timerStart / 60000) % 60)).slice(-2);
         return (
           <div className = "Countdown" >
               <div className = "Countdown-header" > { minutes }:{ seconds } < /div>
@@ -67,7 +69,7 @@ class Countdown extends Component {
                 <button onClick= {() => this.adjustTimer("incMinutes") } >&#8679;</button>
                 <button onClick= {() => this.adjustTimer("incSeconds") } >&#8679;</button>
               </div>
-              <div className = "Countdown-time" > { minutes }:{ seconds } </div>
+              <div className = "Countdown-time" > { mins }:{ secs } </div>
               <div className = "Countdown-label" >
                 <button onClick= {() => this.adjustTimer("decMinutes") } >&#8681;</button>
                 <button onClick= {() => this.adjustTimer("decSeconds") } >&#8681;</button>
